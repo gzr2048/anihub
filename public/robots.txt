@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# 未公开部署，不提供收录

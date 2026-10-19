@@ -1,0 +1,161 @@
+{
+  "site": {
+    "name": "ANIHUB",
+    "cn": "番剧站",
+    "tagline": "全网番剧，一站直看",
+    "port": 7788
+  },
+  "sources": [
+    {
+      "key": "lz",
+      "name": "量子",
+      "api": "https://cj.lziapi.com/api.php/provide/vod/",
+      "weight": 95,
+      "enabled": true,
+      "types": {
+        "jp": [
+          30
+        ],
+        "cn": [
+          29
+        ],
+        "us": [
+          31
+        ],
+        "ai": [
+          52
+        ]
+      },
+      "note": "更新最快，m3u8 直链稳定"
+    },
+    {
+      "key": "wujin",
+      "name": "无尽",
+      "api": "https://api.wujinapi.com/api.php/provide/vod/",
+      "weight": 93,
+      "enabled": true,
+      "types": {
+        "jp": [
+          30
+        ],
+        "cn": [
+          29
+        ],
+        "us": [
+          31
+        ],
+        "ai": [
+          63
+        ],
+        "other": [
+          33
+        ]
+      },
+      "note": "12 万条大库，漫剧与动画片齐全"
+    },
+    {
+      "key": "ffzy",
+      "name": "非凡",
+      "api": "https://api.ffzyapi.com/api.php/provide/vod/",
+      "weight": 90,
+      "enabled": true,
+      "types": {
+        "jp": [
+          30
+        ],
+        "cn": [
+          29
+        ],
+        "us": [
+          31
+        ]
+      },
+      "note": "片库最大，番剧覆盖全"
+    },
+    {
+      "key": "dytt",
+      "name": "天堂",
+      "api": "https://caiji.dyttzyapi.com/api.php/provide/vod/",
+      "weight": 85,
+      "enabled": true,
+      "types": {
+        "jp": [
+          30
+        ],
+        "cn": [
+          29
+        ],
+        "us": [
+          31
+        ]
+      },
+      "note": "老牌资源站"
+    },
+    {
+      "key": "zuid",
+      "name": "最大",
+      "api": "https://api.zuidapi.com/api.php/provide/vod/",
+      "weight": 80,
+      "enabled": true,
+      "types": {
+        "jp": [
+          30
+        ],
+        "cn": [
+          29
+        ],
+        "us": [
+          31
+        ]
+      },
+      "note": "线路多，冷门资源全"
+    },
+    {
+      "key": "bdzy",
+      "name": "北斗",
+      "api": "https://api.apibdzy.com/api.php/provide/vod/",
+      "weight": 78,
+      "enabled": true,
+      "types": {
+        "jp": [
+          30
+        ],
+        "cn": [
+          29
+        ],
+        "us": [
+          31
+        ],
+        "other": [
+          39
+        ]
+      },
+      "note": "补位线路，番剧与动画电影"
+    },
+    {
+      "key": "s360",
+      "name": "360",
+      "api": "https://360zy.com/api.php/provide/vod/",
+      "weight": 75,
+      "enabled": true,
+      "types": {
+        "jp": [
+          40
+        ],
+        "cn": [
+          38
+        ],
+        "us": [
+          39
+        ]
+      },
+      "note": "备用线路"
+    }
+  ],
+  "app": {
+    "version": "1.0.1",
+    "manifest": "",
+    "download": "",
+    "notes": ""
+  }
+}

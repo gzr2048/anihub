@@ -1,0 +1,36 @@
+# ANIHUB 的 Caddy 反向代理配置
+#
+# 装 Caddy（Debian/Ubuntu 官方源）：
+#   apt-get install -y debian-keyring debian-archive-keyring apt-transport-https curl
+#   curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+#   curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' | tee /etc/apt/sources.list.d/caddy-stable.list
+#   apt-get update && apt-get install -y caddy
+#
+# 然后：cp Caddyfile /etc/caddy/Caddyfile && systemctl reload caddy
+#
+# 把 anime.example.com 换成你自己的域名。域名 A 记录指向这台服务器，
+# Caddy 会自动申请并续期 Let's Encrypt 证书，不用自己弄。
+
+anime.example.com {
+	encode zstd gzip
+
+	# 视频流不能缓冲：flush_interval -1 让每个分片立刻送出去，
+	# 否则 Caddy 会攒够一批才发，起播会卡几秒。
+	reverse_proxy 127.0.0.1:7788 {
+		flush_interval -1
+		transport http {
+			read_timeout 300s
+			write_timeout 300s
+		}
+	}
+
+	# 不写访问日志，减少磁盘和隐私面
+	log {
+		output discard
+	}
+
+	header {
+		# 服务器本身也不暴露版本
+		-Server
+	}
+}

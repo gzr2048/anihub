@@ -1,0 +1,30 @@
+# Render 蓝图：把 anihub 免费跑在 Render 上
+#
+# 用法：把这个文件和 anihub 一起推到 GitHub，在 Render 里选
+#   New + → Blueprint → 选仓库
+# Render 会照这份配置建服务，口令自动生成。
+#
+# 如果不想用 Blueprint，也可以走 New + → Web Service，手动连仓库，
+# 其他参数它会自动识别，只是要在环境变量里自己填 ANIHUB_TOKEN。
+
+services:
+  - type: web
+    name: anihub
+    runtime: node
+    plan: free
+    region: singapore
+    buildCommand: echo "no dependencies"
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      # 访问口令，Render 生成随机值，建好之后在 Environment 里能看到
+      - key: ANIHUB_TOKEN
+        generateValue: true
+      # 媒体分片直连，省服务器带宽（免费层只有 100GB/月）
+      - key: ANIHUB_DIRECT
+        value: "1"
+      # 免费层磁盘是临时的，关掉落盘省事，重启后重新聚合即可
+      - key: ANIHUB_CACHE
+        value: "0"
